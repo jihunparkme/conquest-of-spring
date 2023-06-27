@@ -29,3 +29,8 @@
 - [스프링 핵심 원리: 고급편](https://jihunparkme.github.io/Spring-Core-Principles-Advanced/)
 
 - [실전! 스프링 부트](https://jihunparkme.github.io/spring-boot/)
+
+
+스프링 핵심 원리 : 기본편 -> BeanFactory와 ApplicationContext
+
+프로젝트화 할 수 있는거면 프로젝트로..
