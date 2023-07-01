@@ -2,7 +2,6 @@ package com.conquest.spring.bean;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -11,11 +10,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 @SpringBootTest
 public class GetBeanTest {
 
-    @Autowired
-    private AnnotationConfigApplicationContext ac;
-
     @Test
     void findAllBean() {
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext();
+        ac.refresh();
+
         log.info("{}", "스프링에 등록된 모든 빈 정보 조회");
         String[] beanDefinitionNames = ac.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {
@@ -26,6 +25,9 @@ public class GetBeanTest {
 
     @Test
     void findApplicationBean() {
+        AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext();
+        ac.refresh();
+
         String[] beanDefinitionNames = ac.getBeanDefinitionNames();
         log.info("{}", "[ROLE_APPLICATION]: 직접 등록한 애플리케이션 빈");
         for (String beanDefinitionName : beanDefinitionNames) {
