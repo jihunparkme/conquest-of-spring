@@ -12,7 +12,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class GetBeanTest {
 
     @Autowired
-    private AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext();
+    private AnnotationConfigApplicationContext ac;
 
     @Test
     void findAllBean() {
