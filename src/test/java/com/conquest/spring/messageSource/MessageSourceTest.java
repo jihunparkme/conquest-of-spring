@@ -47,4 +47,9 @@ public class MessageSourceTest {
         assertThat(ms.getMessage("hello", null, null)).isEqualTo("안녕");
         assertThat(ms.getMessage("hello", null, Locale.KOREA)).isEqualTo("안녕");
     }
+
+    @Test
+    void enLang() {
+        assertThat(ms.getMessage("hello", null, Locale.ENGLISH)).isEqualTo("hello");
+    }
 }
