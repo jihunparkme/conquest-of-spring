@@ -43,11 +43,16 @@ public class ValidationItemControllerV2 {
         return "validation/v2/addForm";
     }
 
+    /**
+     * @Validated 를 적용하여 검증 사용
+     * 검증 에러 발생 시 FieldError, ObjectError 를 생성해서 BindingResult 에 담아 준다.
+     */
     @PostMapping("/add")
     public String addItem(@Validated @ModelAttribute("item") ItemSaveForm form,
                           BindingResult bindingResult,
                           RedirectAttributes redirectAttributes) {
 
+        // 글로벌 오류는 @ScriptAssert() 의 많은 제약으로 자바 코드로 작성 권장
         if (form.globalFieldIsNotNull()) {
             if (form.getTotalPrice() < 10000) {
                 bindingResult.reject("totalPriceMin", new Object[]{10000, form.getTotalPrice()}, null);
@@ -84,6 +89,7 @@ public class ValidationItemControllerV2 {
                        @Validated @ModelAttribute("item") ItemUpdateForm form,
                        BindingResult bindingResult) {
 
+        // 글로벌 오류는 @ScriptAssert() 의 많은 제약으로 자바 코드로 작성 권장
         if (form.globalFieldIsNotNull()) {
             if (form.getTotalPrice() < 10000) {
                 bindingResult.reject("totalPriceMin", new Object[]{10000, form.getTotalPrice()}, null);
