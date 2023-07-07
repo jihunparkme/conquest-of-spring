@@ -2,6 +2,8 @@ package com.conquest.spring.validation;
 
 import com.conquest.spring.validation.domain.Item;
 import com.conquest.spring.validation.domain.ItemRepository;
+import com.conquest.spring.validation.domain.ItemSaveForm;
+import com.conquest.spring.validation.domain.ItemUpdateForm;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -42,21 +44,31 @@ public class ValidationItemControllerV2 {
     }
 
     @PostMapping("/add")
-    public String addItem(@Validated @ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-        if (item.getPrice() != null && item.getQuantity() != null) {
-            int resultPrice = item.getPrice() * item.getQuantity();
-            if (resultPrice < 10000) {
-                bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
+    public String addItem(@Validated @ModelAttribute("item") ItemSaveForm form,
+                          BindingResult bindingResult,
+                          RedirectAttributes redirectAttributes) {
+
+        if (form.globalFieldIsNotNull()) {
+            if (form.getTotalPrice() < 10000) {
+                bindingResult.reject("totalPriceMin", new Object[]{10000, form.getTotalPrice()}, null);
             }
         }
 
         if (bindingResult.hasErrors()) {
+            log.info("errors={} ", bindingResult);
             return "validation/v2/addForm";
         }
+
+        Item item = Item.builder()
+                .itemName(form.getItemName())
+                .price(form.getPrice())
+                .quantity(form.getQuantity())
+                .build();
 
         Item savedItem = itemRepository.save(item);
         redirectAttributes.addAttribute("itemId", savedItem.getId());
         redirectAttributes.addAttribute("status", true);
+
         return "redirect:/validation/v2/items/{itemId}";
     }
 
@@ -68,8 +80,28 @@ public class ValidationItemControllerV2 {
     }
 
     @PostMapping("/{itemId}/edit")
-    public String edit(@PathVariable Long itemId, @ModelAttribute Item item) {
-        itemRepository.update(itemId, item);
+    public String edit(@PathVariable Long itemId,
+                       @Validated @ModelAttribute("item") ItemUpdateForm form,
+                       BindingResult bindingResult) {
+
+        if (form.globalFieldIsNotNull()) {
+            if (form.getTotalPrice() < 10000) {
+                bindingResult.reject("totalPriceMin", new Object[]{10000, form.getTotalPrice()}, null);
+            }
+        }
+
+        if (bindingResult.hasErrors()) {
+            log.info("errors={}", bindingResult);
+            return "validation/v2/editForm";
+        }
+
+        Item itemParam = Item.builder()
+                .itemName(form.getItemName())
+                .price(form.getPrice())
+                .quantity(form.getQuantity())
+                .build();
+        itemRepository.update(itemId, itemParam);
+
         return "redirect:/validation/v2/items/{itemId}";
     }
 }
