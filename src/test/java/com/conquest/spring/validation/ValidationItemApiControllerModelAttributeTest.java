@@ -1,6 +1,7 @@
 package com.conquest.spring.validation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -25,6 +26,7 @@ class ValidationItemApiControllerModelAttributeTest {
     private static final String BASE_URL = "/validation/api/items";
 
     @Test
+    @DisplayName("요청 성공")
     void validation_item_api_success() throws Exception {
         String request = "itemName=hello&price=10000&quantity=10";
 
@@ -43,6 +45,7 @@ class ValidationItemApiControllerModelAttributeTest {
     }
 
     @Test
+    @DisplayName("요청 실패: 검증 실패")
     void validation_item_api_validation_fail() throws Exception {
         String request = "itemName=hello&price=10000&quantity=100000";
 
@@ -84,6 +87,7 @@ class ValidationItemApiControllerModelAttributeTest {
     }
 
     @Test
+    @DisplayName("요청 실패: 요청 타입 오류")
     void validation_item_api_request_fail() throws Exception {
         String request = "itemName=hello&price=A&quantity=100000";
 
