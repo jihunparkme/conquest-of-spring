@@ -12,7 +12,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -20,7 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/validation/v2/items")
 @RequiredArgsConstructor
-public class ValidationItemController {
+public class ValidationItemControllerV1 {
 
     private final ItemRepository itemRepository;
     private final ItemValidator itemValidator;
@@ -172,7 +171,6 @@ public class ValidationItemController {
         return "redirect:/validation/v2/items/{itemId}";
     }
 
-    @PostMapping("/add")
     public String addItemV6(@Validated @ModelAttribute Item item, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return "validation/v2/addForm";
