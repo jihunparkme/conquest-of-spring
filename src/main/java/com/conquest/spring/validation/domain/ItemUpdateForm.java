@@ -19,4 +19,12 @@ public class ItemUpdateForm {
     private Integer price;
 
     private Integer quantity;
+
+    public boolean globalFieldIsNotNull() {
+        return this.price != null && this.quantity != null;
+    }
+
+    public int getTotalPrice() {
+        return this.price * this.quantity;
+    }
 }
