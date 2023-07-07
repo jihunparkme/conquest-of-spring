@@ -28,11 +28,11 @@ class ValidationItemApiControllerRequestBodyTest {
     @Test
     void validation_item_api_success() throws Exception {
         String itemName = "hello";
-        int prive = 10000;
+        int price = 10000;
         int quantity = 10;
 
         ItemSaveForm request = ItemSaveForm.builder().itemName(itemName)
-                .price(prive)
+                .price(price)
                 .quantity(quantity)
                 .build();
         String body = mapper.writeValueAsString(request);
@@ -52,13 +52,13 @@ class ValidationItemApiControllerRequestBodyTest {
     }
 
     @Test
-    void validation_item_api_valudation_fail() throws Exception {
+    void validation_item_api_validation_fail() throws Exception {
         String itemName = "hello";
-        int prive = 1000;
+        int price = 1000;
         int quantity = 100000;
 
         ItemSaveForm request = ItemSaveForm.builder().itemName(itemName)
-                .price(prive)
+                .price(price)
                 .quantity(quantity)
                 .build();
         String body = mapper.writeValueAsString(request);
