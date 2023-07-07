@@ -27,7 +27,7 @@ public class ItemSaveForm {
         return this.price != null && this.quantity != null;
     }
 
-    public int getTotalPrice() {
+    public int totalPrice() {
         return this.price * this.quantity;
     }
 }

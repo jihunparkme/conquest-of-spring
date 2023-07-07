@@ -24,7 +24,7 @@ public class ItemUpdateForm {
         return this.price != null && this.quantity != null;
     }
 
-    public int getTotalPrice() {
+    public int totalPrice() {
         return this.price * this.quantity;
     }
 }
