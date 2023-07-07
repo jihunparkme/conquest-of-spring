@@ -1,26 +1,28 @@
 package com.conquest.spring.validation.domain;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
 
 @Data
+@NoArgsConstructor
 public class Item {
 
-//    @NotNull(groups = UpdateCheck.class) //수정 요구사항 추가
     private Long id;
 
-//    @NotBlank(groups = {SaveCheck.class, UpdateCheck.class})
+    @NotBlank
     private String itemName;
 
-//    @NotNull(groups = {SaveCheck.class, UpdateCheck.class})
-//    @Range(min = 1000, max = 1000000, groups = {SaveCheck.class, UpdateCheck.class})
+    @NotNull
+    @Range(min = 1000, max = 1000000)
     private Integer price;
 
-//    @NotNull(groups = {SaveCheck.class, UpdateCheck.class})
-//    @Max(value = 9999, groups = {SaveCheck.class})
+    @NotNull
+    @Max(9999)
     private Integer quantity;
-
-    public Item() {
-    }
 
     public Item(String itemName, Integer price, Integer quantity) {
         this.itemName = itemName;
