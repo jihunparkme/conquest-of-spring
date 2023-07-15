@@ -54,8 +54,8 @@ public class ValidationItemControllerV2 {
 
         // 글로벌 오류는 @ScriptAssert() 의 많은 제약으로 자바 코드로 작성 권장
         if (form.globalFieldIsNotNull()) {
-            if (form.getTotalPrice() < 10000) {
-                bindingResult.reject("totalPriceMin", new Object[]{10000, form.getTotalPrice()}, null);
+            if (form.totalPrice() < 10000) {
+                bindingResult.reject("totalPriceMin", new Object[]{10000, form.totalPrice()}, null);
             }
         }
 
@@ -91,8 +91,8 @@ public class ValidationItemControllerV2 {
 
         // 글로벌 오류는 @ScriptAssert() 의 많은 제약으로 자바 코드로 작성 권장
         if (form.globalFieldIsNotNull()) {
-            if (form.getTotalPrice() < 10000) {
-                bindingResult.reject("totalPriceMin", new Object[]{10000, form.getTotalPrice()}, null);
+            if (form.totalPrice() < 10000) {
+                bindingResult.reject("totalPriceMin", new Object[]{10000, form.totalPrice()}, null);
             }
         }
 
