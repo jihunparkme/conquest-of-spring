@@ -22,4 +22,13 @@ public class FilterWebConfig {
         filterRegistrationBean.addUrlPatterns("/*"); // 필터를 적용할 URL 패턴 지정
         return filterRegistrationBean;
     }
+
+    @Bean
+    public FilterRegistrationBean loginCheckFilter() {
+        FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
+        filterRegistrationBean.setFilter(new LoginCheckFilter()); // 로그인 필터 등록
+        filterRegistrationBean.setOrder(2); // 로그 필터 이후 로그인 필터 적용
+        filterRegistrationBean.addUrlPatterns("/*"); // 모든 요청에 로그인 필터 적용
+        return filterRegistrationBean;
+    }
 }
