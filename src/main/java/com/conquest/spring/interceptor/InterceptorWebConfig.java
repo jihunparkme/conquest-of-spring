@@ -17,5 +17,11 @@ public class InterceptorWebConfig implements WebMvcConfigurer {
                 .order(1) // 인터셉터 호출 순서 지정
                 .addPathPatterns("/**") // 인터셉터 적용 URL 패턴 지정
                 .excludePathPatterns("/css/**", "/*.ico", "/error"); // 인터셉터 제외 패턴 지정
+        registry.addInterceptor(new LoginCheckInterceptor())
+                .order(2)
+                .addPathPatterns("/**")
+                .excludePathPatterns(
+                        "/", "/members/add", "/login", "/logout", "/css/**", "/*.ico", "/error"
+                );
     }
 }
