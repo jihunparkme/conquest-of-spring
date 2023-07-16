@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-public class LoginController {
+public class CookieLoginController {
 
     private final LoginService loginService;
     private final MemberRepository memberRepository;

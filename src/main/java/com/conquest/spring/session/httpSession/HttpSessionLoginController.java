@@ -3,10 +3,7 @@ package com.conquest.spring.session.httpSession;
 import com.conquest.spring.login.domain.login.LoginService;
 import com.conquest.spring.login.domain.member.Member;
 import com.conquest.spring.login.web.login.LoginForm;
-import com.conquest.spring.session.SessionManager;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +19,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-public class LoginController {
+public class HttpSessionLoginController {
 
     private final LoginService loginService;
 
