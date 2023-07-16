@@ -3,10 +3,7 @@ package com.conquest.spring.session.httpSession;
 import com.conquest.spring.login.domain.login.LoginService;
 import com.conquest.spring.login.domain.member.Member;
 import com.conquest.spring.login.web.login.LoginForm;
-import com.conquest.spring.session.SessionManager;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -14,15 +11,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @Controller
+@RequestMapping("/http-session")
 @RequiredArgsConstructor
-public class LoginController {
+public class HttpSessionLoginController {
 
     private final LoginService loginService;
 
