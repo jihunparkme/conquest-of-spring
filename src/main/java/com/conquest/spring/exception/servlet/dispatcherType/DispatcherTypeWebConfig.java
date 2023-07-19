@@ -8,6 +8,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * error-page/** 요청 시
+ * 필터는 setDispatcherTypes 에 DispatcherType.ERROR 가 등록되어 호출되지만,
+ * 인터셉터는 excludePathPatterns 에 오류 페이지 경로가 등록되어 호출되지 않음.
+ *
+ * error-page/** 요청 시에는
+ * 필터와 인터셉터 모두 호출되지만,
+ * 내부 응답으로 요청되는 error-page/** 요청은 필터만 호출
+ */
 @Configuration
 public class DispatcherTypeWebConfig implements WebMvcConfigurer {
 
@@ -22,13 +31,13 @@ public class DispatcherTypeWebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LogInterceptor())
                 .order(1)
                 .addPathPatterns("/**")
-                .excludePathPatterns(
+                .excludePathPatterns( // 해당 경로 호출 시 인터셉터를 호출하지 않음
                         "/css/**", "/*.ico"
-                        , "/error", "/error-page/**" //오류 페이지 경로
+                        , "/error", "/error-page/**"
                 );
     }
 
-//    @Bean
+    @Bean
     public FilterRegistrationBean logFilter() {
         FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
         filterRegistrationBean.setFilter(new LogFilter());
