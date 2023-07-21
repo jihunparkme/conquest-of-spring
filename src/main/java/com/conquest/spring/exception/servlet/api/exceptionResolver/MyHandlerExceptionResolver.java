@@ -1,4 +1,4 @@
-package com.conquest.spring.exception.servlet.exceptionResolver;
+package com.conquest.spring.exception.servlet.api.exceptionResolver;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
