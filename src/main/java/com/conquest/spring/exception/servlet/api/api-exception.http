@@ -6,3 +6,8 @@ Accept: application/json
 ### 예외 발생 호출
 GET http://localhost:8080/api/members/ex
 Accept: application/json
+
+
+### 예외 발생 호출 2
+GET http://localhost:8080/api/members/bad
+Accept: application/json

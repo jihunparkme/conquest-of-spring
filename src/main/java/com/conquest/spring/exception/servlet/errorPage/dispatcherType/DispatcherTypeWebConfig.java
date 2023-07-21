@@ -1,12 +1,16 @@
 package com.conquest.spring.exception.servlet.errorPage.dispatcherType;
 
+import com.conquest.spring.exception.servlet.api.exceptionResolver.MyHandlerExceptionResolver;
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.List;
 
 /**
  * error-page/** 요청 시
@@ -35,6 +39,11 @@ public class DispatcherTypeWebConfig implements WebMvcConfigurer {
                         "/css/**", "/*.ico"
                         , "/error", "/error-page/**"
                 );
+    }
+
+    @Override
+    public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
+        resolvers.add(new MyHandlerExceptionResolver());
     }
 
     @Bean
