@@ -1,4 +1,4 @@
-package com.conquest.spring.exception.servlet;
+package com.conquest.spring.exception.servlet.errorPage;
 
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;

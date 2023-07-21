@@ -1,4 +1,4 @@
-package com.conquest.spring.exception.servlet;
+package com.conquest.spring.exception.servlet.errorPage;
 
 import org.springframework.boot.web.server.ConfigurableWebServerFactory;
 import org.springframework.boot.web.server.ErrorPage;
