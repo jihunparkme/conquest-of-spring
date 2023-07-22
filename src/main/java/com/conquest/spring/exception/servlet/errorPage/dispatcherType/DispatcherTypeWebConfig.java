@@ -1,6 +1,7 @@
 package com.conquest.spring.exception.servlet.errorPage.dispatcherType;
 
 import com.conquest.spring.exception.servlet.api.exceptionResolver.MyHandlerExceptionResolver;
+import com.conquest.spring.exception.servlet.api.exceptionResolver.UserHandlerExceptionResolver;
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.Filter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -44,6 +45,7 @@ public class DispatcherTypeWebConfig implements WebMvcConfigurer {
     @Override
     public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
         resolvers.add(new MyHandlerExceptionResolver());
+        resolvers.add(new UserHandlerExceptionResolver());
     }
 
     @Bean

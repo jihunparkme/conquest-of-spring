@@ -11,3 +11,13 @@ Accept: application/json
 ### 예외 발생 호출 2
 GET http://localhost:8080/api/members/bad
 Accept: application/json
+
+
+### HandlerExceptionResolver 적용 json 요청
+http://localhost:8080/api/members/user-ex
+Accept: application/json
+
+
+### HandlerExceptionResolver 적용 그외 요청
+http://localhost:8080/api/members/user-ex
+Accept: text/html
