@@ -29,3 +29,7 @@ http://localhost:8080/api/response-status-ex1?message=
 
 ### ResponseStatusExceptionResolver: ResponseStatusException
 http://localhost:8080/api/response-status-ex2
+
+
+### DefaultHandlerExceptionResolver
+http://localhost:8080/api/default-handler-ex?data=hello&message=
