@@ -224,7 +224,21 @@
 - [`Exception`](https://jihunparkme.github.io/Spring-MVC-Part2-Exception/)
 
 ```text
-
+• 예외 처리와 오류 페이지
+    • 서블릿 예외 처리
+    • 서블릿 오류 페이지
+        • DispatcherType 🌞
+    • 스프링 부트 오류 페이지 🌞
+        • BasicErrorController
+• API 예외 처리
+    • Spring Boot 기본 오류 처리
+    • ExceptionResolver
+        • ExceptionResolver 적용
+    • Spring ExceptionResolver
+        • ExceptionHandlerExceptionResolver 🌞
+        • @ControllerAdvice 🌞
+        • ResponseStatusExceptionResolver
+        • DefaultHandlerExceptionResolver
 ```
 
 ---
@@ -244,9 +258,6 @@
 [`실전! 스프링 부트`](https://jihunparkme.github.io/spring-boot/)
 
 
-
-8. 예외 처리와 오류 페이지.pdf
-9. API 예외 처리.pdf
 
 ➔
 
