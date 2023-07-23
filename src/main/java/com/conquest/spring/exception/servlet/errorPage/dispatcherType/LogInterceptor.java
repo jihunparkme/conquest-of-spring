@@ -1,4 +1,4 @@
-package com.conquest.spring.exception.servlet.dispatcherType;
+package com.conquest.spring.exception.servlet.errorPage.dispatcherType;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

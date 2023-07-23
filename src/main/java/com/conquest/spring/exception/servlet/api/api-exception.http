@@ -1,0 +1,47 @@
+### 정상 호출
+GET http://localhost:8080/api/members/spring
+Accept: application/json
+
+
+### 예외 발생 호출
+GET http://localhost:8080/api/members/ex
+Accept: application/json
+
+
+### 예외 발생 호출 2
+GET http://localhost:8080/api/members/bad
+Accept: application/json
+
+
+### HandlerExceptionResolver 적용 json 요청
+http://localhost:8080/api/members/user-ex
+Accept: application/json
+
+
+### HandlerExceptionResolver 적용 그외 요청
+http://localhost:8080/api/members/user-ex
+Accept: text/html
+
+
+### ResponseStatusExceptionResolver: @ResponseStatus
+http://localhost:8080/api/response-status-ex1?message=
+
+
+### ResponseStatusExceptionResolver: ResponseStatusException
+http://localhost:8080/api/response-status-ex2
+
+
+### DefaultHandlerExceptionResolver
+http://localhost:8080/api/default-handler-ex?data=hello&message=
+
+
+### ExceptionHandler
+http://localhost:8080/spring-exception-resolver/api2/members/bad
+
+
+### UserException 처리
+http://localhost:8080/spring-exception-resolver/api2/members/user-ex
+
+
+###  Exception
+http://localhost:8080/spring-exception-resolver/api2/members/ex
